@@ -51,3 +51,32 @@ app.get("/", (req,res)=>{
 app.listen(3000, ()=>{
   console.log("Servidor rodando na porta 3000")
 })
+import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
+
+const usuarioFake = {
+  email: "admin@tanamao.com",
+  senha: "$2b$10$c37PIGO4MkPptQVsCQj7zOtDbPZ1RStxVXsQDpJMD6z/bgfk4DyH6" // 123456
+}
+
+app.post("/api/login", async (req, res) => {
+  const { email, senha } = req.body
+
+  if (email !== usuarioFake.email) {
+    return res.status(401).json({ erro: "Usuário inválido" })
+  }
+
+  const senhaValida = await bcrypt.compare(senha, usuarioFake.senha)
+
+  if (!senhaValida) {
+    return res.status(401).json({ erro: "Senha inválida" })
+  }
+
+  const token = jwt.sign(
+    { email },
+    process.env.JWT_SECRET,
+    { expiresIn: "1d" }
+  )
+
+  res.json({ token })
+})
