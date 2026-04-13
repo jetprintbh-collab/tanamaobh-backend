@@ -5,7 +5,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const app = express()
-
+const API = "https://tanamaobh-api.onrender.com/api"
 app.use(cors())
 app.use(express.json())
 
