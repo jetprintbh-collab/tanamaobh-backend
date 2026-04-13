@@ -13,8 +13,7 @@ const users = [
   {
     id: 1,
     nickname: "junior",
-    password_hash: "$2b$10$c37PIGO4MkPptQVscQJ7zOtDbPZ1RStxVXsQDpJMD6z/bgfk4DyH6
-" // depois trocamos
+    password_hash: "$2b$10$c37PIG04MkPptQVscQJ7zOtDbPZ1RStxVXsQDpJMD6z/bgkf4DyH6" // depois trocamos
   }
 ]
 
