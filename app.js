@@ -8,18 +8,18 @@ dotenv.config()
 
 const app = express()
 
-// 🔥 MIDDLEWARES (ANTES DAS ROTAS)
+// middlewares
 app.use(cors())
 app.use(express.json())
 
-// 🔐 USUÁRIO MOCK (teste)
+// usuário fake (login teste)
 const user = {
   id: 1,
   nickname: "junior",
   password_hash: "$2b$10$c37PIG04MkPptQVscQJ7zOtDbPZ1RStxVXsQDpJMD6z/bgkf4DyH6" // senha: 123456
 }
 
-// 🚀 ROTA LOGIN
+// rota login
 app.post("/api/login", async (req, res) => {
   try {
     const { nickname, password } = req.body
@@ -51,12 +51,12 @@ app.post("/api/login", async (req, res) => {
   }
 })
 
-// 🧪 ROTA TESTE
+// rota teste
 app.get("/", (req, res) => {
   res.send("🔥 Backend Tá Na Mão rodando")
 })
 
-// 🚀 PORTA (IMPORTANTE PRO RENDER)
+// porta render
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
