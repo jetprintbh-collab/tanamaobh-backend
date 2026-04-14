@@ -18,22 +18,33 @@
       const nickname = document.getElementById("nickname").value
       const password = document.getElementById("password").value
 
-      const res = await fetch("https://tanamaobh-api.onrender.com/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ nickname, password })
-      })
+      try {
+        const res = await fetch("https://tanamaobh-api.onrender.com/api/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ nickname, password })
+        })
 
-      const data = await res.json()
+        const data = await res.json()
 
-      console.log(data)
+        if (res.ok) {
+          // 🔐 salva token
+          localStorage.setItem("token", data.token)
 
-      if (data.token) {
-        alert("Login OK 🔥")
-      } else {
-        alert("Erro: " + data.error)
+          alert("Login OK 🔥")
+
+          // 🚀 redireciona
+          window.location.href = "dashboard.html"
+
+        } else {
+          alert("Erro: " + data.error)
+        }
+
+      } catch (err) {
+        alert("Erro de conexão com servidor")
+        console.error(err)
       }
     }
   </script>
