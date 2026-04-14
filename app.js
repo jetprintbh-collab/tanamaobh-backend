@@ -16,7 +16,7 @@ app.use(express.json())
 const user = {
   id: 1,
   nickname: "junior",
-  password_hash: "$2b$10$c37PIG04MkPptQVscQJ7zOtDbPZ1RStxVXsQDpJMD6z/bgkf4DyH6" // senha: 123456
+  password_hash: "$2b$10$MR58UkgxmciIY.3B0hI7COlL83wOHNT.dxf0sTx29iddKMeaseihi" // senha: 123456
 }
 
 // rota login
